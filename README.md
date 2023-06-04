@@ -6,9 +6,7 @@ Accomplish a log module.
 
 + [x] [01Log](./tech/01log.md)
 + [x] [02file](./tech/02file.md)
-+ [ ] [03Lock](./tech/03lock.md)
-+ [ ] [04Usage](./tech/04usage.md)
-
++ [x] [03Lock](./tech/03lock.md)
 
 ## Ref
 

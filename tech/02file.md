@@ -67,7 +67,7 @@ void log_log(uint32_t level, const char* file, uint32_t line, const char* fmt, .
 }
 ```
 
-## 测试:
+## 测试
 
 ```c++
 FILE* fp = fopen("file.log", "ab+");

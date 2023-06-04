@@ -14,6 +14,8 @@ typedef struct {
     int level;
 } Callback;
 static struct {
+    void* lock_data;
+    log_LockFn lock;
     uint32_t level;
     Callback callbacks[MAX_CALLBACKS];
 } L;
@@ -32,6 +34,13 @@ static void out_callback(Log_Event* ev, bool is_file) {
     vfprintf(f, ev->fmt, ev->ap);
     fprintf(f, "\n");
     fflush(f);
+}
+static void lock(bool is_lock) {
+    if (L.lock) L.lock(is_lock, L.lock_data);
+}
+void log_set_lock(log_LockFn fn, void* lock_data) {
+    L.lock = fn;
+    L.lock_data = lock_data;
 }
 void log_set_level(uint32_t level) {
     L.level = level;
@@ -62,6 +71,7 @@ void log_log(uint32_t level, const char* file, uint32_t line, const char* fmt, .
             .line = line,
         .level = level,
     };
+    lock(true);
     if (level >= L.level) {
         FILE* f = stdout;
         if (level >= LOG_WARN) f = stderr;
@@ -79,4 +89,5 @@ void log_log(uint32_t level, const char* file, uint32_t line, const char* fmt, .
             va_end(ev.ap);
         }
     }
+    lock(false);
 }
