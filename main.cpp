@@ -4,7 +4,7 @@
 #include "utils.hpp"
 
 int main() {
-    FILE* fp = set_log_file("file.log", LOG_WARN);
+    FILE* fp = set_log_file("aa/file.log", LOG_WARN);
     set_mutex_lock();
     log_debug("?????");
     log_debug("hello %s", "world");
