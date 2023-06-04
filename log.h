@@ -35,6 +35,9 @@ enum { LOG_TRACE, LOG_DEBUG, LOG_INFO, LOG_WARN, LOG_ERROR, LOG_FATAL };
 #define log_fatal(...) log_log(LOG_FATAL, __FILE__, __LINE__, __VA_ARGS__)
 
 void log_set_level(uint32_t level);
+int log_add_fp(FILE* fp, uint32_t level);
+int log_add_callback(log_LogFn fn, void* udata, uint32_t level);
+
 void log_log(uint32_t level, const char* file, uint32_t line, const char* fmt, ...);
 
 #ifdef __cplusplus
