@@ -74,3 +74,17 @@ static void out_callback(Log_Event* ev) {
 }
 ```
 
+在调用`void(*log_log)(uint32_t level, const char* file, uint32_t line, const char* fmt, ...)`后，即可正确打印日志。
+
+为了方便打印，增加宏定义:
+
+```c++
+#define log_trace(...) log_log(LOGTRACE, __FILE__, __LINE__, __VA_ARGS__)
+#define log_debug(...) log_log(LOG_DEBUG, __FILE__, __LINE__, __VA_ARGS__)
+#define log_info(...)  log_log(LOG_INFO,  __FILE__, __LINE__, __VA_ARGS__)
+#define log_warn(...)  log_log(LOG_WARN,  __FILE__, __LINE__, __VA_ARGS__)
+#define log_error(...) log_log(LOG_ERROR, __FILE__, __LINE__, __VA_ARGS__)
+#define log_fatal(...) log_log(LOG_FATAL, __FILE__, __LINE__, __VA_ARGS__)
+```
+
+至此，实现基础日志打印功能。

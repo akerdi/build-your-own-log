@@ -1,12 +1,13 @@
 # Build your own log
 
-完成一个日志模块。
+完成一个日志模块。包含日志打印至控制台，文件写入，互斥锁控制等功能。
 
 Accomplish a log module.
 
 + [x] [01Log](./tech/01log.md)
-+ [ ] [02Lock](./tech/02lock.md)
-+ [ ] [03Usage](./tech/03usage.md)
++ [x] [02file](./tech/02file.md)
++ [ ] [03Lock](./tech/03lock.md)
++ [ ] [04Usage](./tech/04usage.md)
 
 
 ## Ref

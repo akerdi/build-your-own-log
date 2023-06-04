@@ -38,11 +38,11 @@ void log_log(uint32_t level, const char* file, uint32_t line, const char* fmt, .
             .fmt = fmt,
             .file = file,
             .line = line,
-            .level = level,
+        .level = level,
     };
     if (level >= L.level) {
         FILE* f = stdout;
-        if (level > LOG_WARN) f = stderr;
+        if (level >= LOG_WARN) f = stderr;
         init_event(&ev, f);
         va_start(ev.ap, fmt);
         out_callback(&ev);
